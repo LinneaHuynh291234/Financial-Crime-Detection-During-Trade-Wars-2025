@@ -1,7 +1,12 @@
+pandas
 numpy
-pandas 
-matplotlib 
-seaborn 
-scikit-learn
+seaborn
+matplotlib
 plotly.express
+scikit-learn
+catboost
+xgboost
+Flask
+faker
+forex_python
 -e .
