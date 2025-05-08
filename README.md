@@ -50,5 +50,3 @@ The data used in this project is simulated and represents typical corporate tran
 - `type_description`, `narrative`, `counterparty_name`
 - `amount` (converted to EUR using Riksbanken API)
 - **Additional engineered features** such as turnover jump %, risk_flag, and more.
-
----z
