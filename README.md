@@ -5,7 +5,7 @@ A data science project simulating and detecting trade-based money laundering (TB
 
 ### Project Inspiration
 This project is inspired by the study:  
-**Ferwerda, Joras (2019). "Tariffs, Sanctions and the Problem of Trade-Based Money Laundering". European Studies on Crime and Criminal Justice.**
+*Ferwerda, Joras (2019). "Tariffs, Sanctions and the Problem of Trade-Based Money Laundering". European Studies on Crime and Criminal Justice.*
 
 ---
 
@@ -14,13 +14,13 @@ This project is inspired by the study:
 This project aims to simulate real-world trade-based money laundering activities in corporate cross-border payments. Key objectives include detecting patterns of illicit trade using transactional data and applying fraud detection methods for suspicious behavior in banking.
 
 ### Key Goals:
-- Simulate **10,000 corporate transactions** in the Nordic banking market (SEK, DKK, NOK).
-- **Identify red flags** linked to trade-based money laundering (TBML) such as:
-  - **Unusual turnover spikes**
-  - **Payments to sanctioned or risky jurisdictions**
-  - **Industry mismatch** between trading partners
+- Simulate 10,000 corporate transactions in the Nordic banking market (SEK, DKK, NOK).
+- Identify red flags linked to trade-based money laundering (TBML) such as:
+  - Unusual turnover spikes
+  - Payments to sanctioned or risky jurisdictions
+  - Splitting Payment
 - **Feature Engineering**: Turnover jump %, off-hours activity, payment splitting, risky country exposure, and more.
-- Use the **Riksbanken API** to convert transaction amounts to **EUR** for consistency in analysis and decision-making.
+- Use the *Riksbanken API* to convert transaction amounts to **EUR** for consistency in analysis and decision-making.
 
 ---
 
@@ -43,12 +43,12 @@ This project aims to simulate real-world trade-based money laundering activities
 
 ## 💾 Data Collection
 
-The data used in this project is **simulated** and represents typical corporate transactions across Nordic countries. The following fields are included:
+The data used in this project is simulated and represents typical corporate transactions across Nordic countries. The following fields are included:
 - `transaction_id`
 - `currency`
 - `booking_date`, `transaction_date`, `payment_date`
 - `type_description`, `narrative`, `counterparty_name`
 - `amount` (converted to EUR using Riksbanken API)
-- **Additional engineered features** such as turnover jump %, off-hour flag, and more.
+- **Additional engineered features** such as turnover jump %, risk_flag, and more.
 
 ---
