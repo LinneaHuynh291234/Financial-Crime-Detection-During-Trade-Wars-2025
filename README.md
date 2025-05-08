@@ -1,7 +1,7 @@
 # Fraud Detection on Trade-Based Money Laundering (TBML)  
 **Simulated Data – Nordea Open Banking Format**
 
-A data science project simulating and detecting trade-based money laundering (TBML) in Nordic banking transactions. This project uses simulated data based on the **Nordea Open Banking API** format and incorporates dynamic currency conversion using the **Riksbanken API**.
+A data science project simulating and detecting trade-based money laundering (TBML) in Nordic banking transactions. This project uses simulated data based on the **Nordea Open Banking API** format and integrates dynamic currency conversion through the **Riksbanken API**.
 
 ### Project Inspiration
 This project is inspired by the study:  
@@ -17,9 +17,9 @@ This project aims to simulate real-world trade-based money laundering activities
 - Simulate 10,000 corporate transactions in the Nordic banking market (SEK, DKK, NOK).
 - Identify red flags linked to trade-based money laundering (TBML) such as:
   - Unusual turnover spikes
-  - Payments to sanctioned or risky jurisdictions
+  - Payments made to sanctioned or high-risk counterparties
   - Splitting Payment
-- Feature Engineering: Turnover jump %, off-hours activity, payment splitting, risky country exposure, and more.
+- Feature Engineering: Turnover jump %, payment splitting, risky country exposure, and more.
 - Use the *Riksbanken API* to convert transaction amounts to EUR for consistency in analysis and decision-making.
 
 ---
@@ -27,7 +27,7 @@ This project aims to simulate real-world trade-based money laundering activities
 ## 🔧 Tools and Technologies
 
 - **Python** (Pandas, NumPy, Scikit-learn) for data processing and modeling.
-- **SQL** (PostgreSQL) for transaction aggregation and analysis.
+- **SQL** (SQLite3) for transaction aggregation and analysis.
 - **Riksbanken API** for dynamic currency conversion to EUR.
 - **Jupyter Notebooks** for exploratory data analysis (EDA) and model development.
 - **Nordea Open Banking API** data format used for simulating realistic transactions.
@@ -51,4 +51,4 @@ The data used in this project is simulated and represents typical corporate tran
 - `amount` (converted to EUR using Riksbanken API)
 - **Additional engineered features** such as turnover jump %, risk_flag, and more.
 
----
+---z
