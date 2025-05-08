@@ -5,7 +5,7 @@ A data science project simulating and detecting trade-based money laundering (TB
 
 ### Project Inspiration
 This project is inspired by the study:  
-*Ferwerda, Joras (2019). "Tariffs, Sanctions and the Problem of Trade-Based Money Laundering". European Studies on Crime and Criminal Justice.*
+**Ferwerda, Joras (2019). "Tariffs, Sanctions and the Problem of Trade-Based Money Laundering". European Studies on Crime and Criminal Justice.**
 
 ---
 
@@ -19,8 +19,8 @@ This project aims to simulate real-world trade-based money laundering activities
   - Unusual turnover spikes
   - Payments to sanctioned or risky jurisdictions
   - Splitting Payment
-- **Feature Engineering**: Turnover jump %, off-hours activity, payment splitting, risky country exposure, and more.
-- Use the *Riksbanken API* to convert transaction amounts to **EUR** for consistency in analysis and decision-making.
+- Feature Engineering: Turnover jump %, off-hours activity, payment splitting, risky country exposure, and more.
+- Use the *Riksbanken API* to convert transaction amounts to EUR for consistency in analysis and decision-making.
 
 ---
 
