@@ -14,7 +14,7 @@ This project is inspired by the study:
 This project aims to simulate real-world trade-based money laundering activities in corporate cross-border payments. Key objectives include detecting patterns of illicit trade using transactional data and applying fraud detection methods for suspicious behavior in banking.
 
 ### Key Goals:
-- Simulate 10,000 corporate transactions in the Nordic banking market (SEK, DKK, NOK).
+- Simulate 10,325 corporate transactions in the Nordic banking market (SEK, DKK, NOK).
 - Identify red flags linked to trade-based money laundering (TBML) such as:
   - Unusual turnover spikes
   - Payments made to sanctioned or high-risk counterparties
