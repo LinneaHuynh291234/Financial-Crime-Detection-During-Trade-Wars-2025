@@ -1,7 +1,12 @@
 # Fraud Detection on Trade-Based Money Laundering (TBML)  
-**Simulated Data – Nordea Open Banking Format**
+### 🧾 Project Overview
 
-A data science project simulating and detecting trade-based money laundering (TBML) in Nordic banking transactions. This project uses simulated data based on the **Nordea Open Banking API** format and integrates dynamic currency conversion through the **Riksbanken API**.
+This data science project simulates and detects **Trade-Based Money Laundering (TBML)** in corporate banking transactions, focusing on behavioral patterns that emerge during **tariff and sanctions-related tension** (e.g., China vs US).
+
+### 🕒 Simulation Context
+
+- **Date Range**: Simulated data covers the period from **2025-04-02 to 2025-12-31**
+- **Scenario Assumption**:  In mid-2025, a trade war escalation introduces new tariffs and restrictions, leading to unusual or suspicious transaction patterns.
 
 ### Project Inspiration
 This project is inspired by the study:  
@@ -9,18 +14,16 @@ This project is inspired by the study:
 
 ---
 
-## 🧾 Project Overview
-
-This project aims to simulate real-world trade-based money laundering activities in corporate cross-border payments. Key objectives include detecting patterns of illicit trade using transactional data and applying fraud detection methods for suspicious behavior in banking.
-
 ### Key Goals:
-- Simulate 10,325 corporate transactions in the Nordic banking market (SEK, DKK, NOK).
+- Simulate more than 10,000 corporate transactions in the Nordic banking market (SEK, DKK, NOK).
+- Use the *Riksbanken API* to convert transaction amounts to EUR for consistency in analysis and decision-making.
 - Identify red flags linked to trade-based money laundering (TBML) such as:
   - Unusual turnover spikes
   - Payments made to sanctioned or high-risk counterparties
   - Splitting Payment
-- Feature Engineering: Turnover jump %, payment splitting, risky country exposure, and more.
-- Use the *Riksbanken API* to convert transaction amounts to EUR for consistency in analysis and decision-making.
+- Perform EDA using various statistical and visualization techniques
+- Feature Engineering.
+-Baseline Model Training.
 
 ---
 
@@ -40,13 +43,3 @@ This project aims to simulate real-world trade-based money laundering activities
 - **Payment Splitting**: Identify patterns of multiple payments to the same counterpart within a short timeframe.
 
 ---
-
-## 💾 Data Collection
-
-The data used in this project is simulated and represents typical corporate transactions across Nordic countries. The following fields are included:
-- `transaction_id`
-- `currency`
-- `booking_date`, `transaction_date`, `payment_date`
-- `type_description`, `narrative`, `counterparty_name`
-- `amount` (converted to EUR using Riksbanken API)
-- **Additional engineered features** such as turnover jump %, risk_flag, and more.
