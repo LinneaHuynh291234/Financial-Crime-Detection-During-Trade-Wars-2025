@@ -2,7 +2,7 @@
 
 ### 🧾 Project Overview
 
-This project is a **Proof of Concept (PoC)** for detecting potential financial crime in corporate banking transactions. It demonstrates my interest and capabilities in financial crime detection using synthetic Nordic transaction data and machine learning.
+This project is a **Proof of Concept (PoC)** aimed at detecting potential financial crime in corporate banking transactions. It reflects my growing interest in financial crime prevention, particularly in the context of evolving geopolitical risks. 
 
 ### 🕒 Simulation Context
 
@@ -12,14 +12,14 @@ This project is a **Proof of Concept (PoC)** for detecting potential financial c
 | **Scenario**   | A hypothetical trade tension escalation in mid-2025 triggering abnormal payment behavior.  |
 | **Currencies** | SEK, DKK, NOK → **converted to EUR** in-flight using the **Riksbanken API**.                |
 | **Volume**     | **10,716** transactions (≈ 3% labeled as suspicious).                                       |
-| **Risk Scoring** | Simple risk score (0–1) applied.                                                          |
+| **Risk Scoring** | Not included in this PoC; dataset uses binary `is_fraud` labels to indicate suspicious transactions.|                                                     
 
 ---
 
 ## 🎯 Objectives
 
 1. **Generate** realistic Nordic transaction data (Nordea API schema).  
-2. **Engineer** focused risk indicators:  
+2. **Engineer risk indicators:**  
    - Turnover jump %  
    - Payments to risky countries  
    - Payment splitting detection:  
