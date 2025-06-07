@@ -1,45 +1,48 @@
-# Fraud Detection on Trade-Based Money Laundering (TBML)  
+# Fraud Detection - Corporate Banking Transactions
+
 ### 🧾 Project Overview
 
-This data science project simulates and detects **Trade-Based Money Laundering (TBML)** in corporate banking transactions, focusing on behavioral patterns that emerge during **tariff and sanctions-related tension** (e.g., China vs US).
+This project is a **Proof of Concept (PoC)** for detecting potential financial crime in corporate banking transactions. It demonstrates my interest and capabilities in financial crime detection using synthetic Nordic transaction data and machine learning.
 
 ### 🕒 Simulation Context
 
-- **Date Range**: Simulated data covers the period from **2025-04-02 to 2025-12-31**
-- **Scenario Assumption**:  In mid-2025, a trade war escalation introduces new tariffs and restrictions, leading to unusual or suspicious transaction patterns.
-
-### Project Inspiration
-This project is inspired by the study:  
-**Ferwerda, Joras (2019). "Tariffs, Sanctions and the Problem of Trade-Based Money Laundering". European Studies on Crime and Criminal Justice.**
+| Item           | Detail                                                                                      |
+|----------------|---------------------------------------------------------------------------------------------|
+| **Date range** | **2025‑04‑02 → 2025‑12‑31**                                                                |
+| **Scenario**   | A hypothetical trade tension escalation in mid-2025 triggering abnormal payment behavior.  |
+| **Currencies** | SEK, DKK, NOK → **converted to EUR** in-flight using the **Riksbanken API**.                |
+| **Volume**     | **10,716** transactions (≈ 3% labeled as suspicious).                                       |
+| **Risk Scoring** | Simple risk score (0–1) applied.                                                          |
 
 ---
 
-### Key Goals:
-- Simulate more than 10,000 corporate transactions in the Nordic banking market (SEK, DKK, NOK).
-- Use the *Riksbanken API* to convert transaction amounts to EUR for consistency in analysis and decision-making.
-- Identify red flags linked to trade-based money laundering (TBML) such as:
-  - Unusual turnover spikes
-  - Payments made to sanctioned or high-risk counterparties
-  - Splitting Payment
-- Perform EDA using various statistical and visualization techniques
-- Feature Engineering.
--Baseline Model Training.
+## 🎯 Objectives
+
+1. **Generate** realistic Nordic transaction data (Nordea API schema).  
+2. **Engineer** focused risk indicators:  
+   - Turnover jump %  
+   - Payments to risky countries  
+   - Payment splitting detection:  
+     - Multiple payments within a single day  
+     - Repeated or similar transaction amounts  
+     - High frequency of payments above a threshold  
+3. **Detect** suspicious payments using:  
+   - Logistic Regression & Random Forest (supervised)  
+   - Isolation Forest (unsupervised)  
+4. **Document** a repeatable workflow:  
+   - Data Collection: AML_KYC_risk_assessment_report & Nordic_transaction_report  
+   - Data Cleaning: Currency conversion, duplicate removal  
+   - EDA: Descriptive and uni-/bivariate analysis  
+   - Feature Engineering: Handling missing data, feature creation, transformation, scaling  
+   - Model Training: Logistic Regression, Random Forest, Isolation Forest  
+   - Evaluation: Precision-Recall, ROC-AUC, confusion matrix, feature importance  
 
 ---
 
 ## 🔧 Tools and Technologies
 
-- **Python** (Pandas, NumPy, Scikit-learn) for data processing and modeling.
-- **SQL** (SQLite3) for transaction aggregation and analysis.
-- **Riksbanken API** for dynamic currency conversion to EUR.
-- **Jupyter Notebooks** for exploratory data analysis (EDA) and model development.
-- **Nordea Open Banking API** data format used for simulating realistic transactions.
-
----
-
-## 🔍 Features Engineered
-- **Turnover Jump %**: Detect sudden increases in transaction amounts for a given account.
-- **Risky Country Flag**: Identify payments made to high-risk countries (e.g., US, countries under sanction).
-- **Payment Splitting**: Identify patterns of multiple payments to the same counterpart within a short timeframe.
-
----
+- **Python** (Pandas, NumPy, Scikit-learn) for data processing and modeling  
+- **SQL** (SQLite3) for transaction aggregation and analysis  
+- **Riksbanken API** for dynamic currency conversion to EUR  
+- **Jupyter Notebooks** for EDA and model development  
+- **Nordea Open Banking API** data format for realistic transaction simulation  
