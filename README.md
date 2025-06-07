@@ -18,7 +18,7 @@ This project is a **Proof of Concept (PoC)** aimed at detecting potential financ
 
 ## 🎯 Objectives
 
-1. **Generate** realistic Nordic transaction data (Nordea API schema).  
+1. **Generate realistic Nordic transaction data** (Nordea API schema).  
 2. **Engineer risk indicators:**  
    - Turnover jump %  
    - Payments to risky countries  
@@ -26,10 +26,10 @@ This project is a **Proof of Concept (PoC)** aimed at detecting potential financ
      - Multiple payments within a single day  
      - Repeated or similar transaction amounts  
      - High frequency of payments above a threshold  
-3. **Detect** suspicious payments using:  
+3. **Detect suspicious payments using:**  
    - Logistic Regression & Random Forest (supervised)  
    - Isolation Forest (unsupervised)  
-4. **Document** a repeatable workflow:  
+4. **Document a repeatable workflow:**  
    - Data Collection: AML_KYC_risk_assessment_report & Nordic_transaction_report  
    - Data Cleaning: Currency conversion, duplicate removal  
    - EDA: Descriptive and uni-/bivariate analysis  
