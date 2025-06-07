@@ -2,7 +2,7 @@
 
 ### 🧾 Project Overview
 
-As a **Proof of Concept (PoC)**, this data science project aims to detect potential fraudulent transactions in corporate banking. It reflects my deepening interest in **Financial Crime Prevention**, especially in the context of evolving geopolitical risks that may increase suspicious transaction activity.
+As a **Proof of Concept (PoC)**, this data science project aims to detect potential fraudulent transactions in corporate banking. It reflects my deepening interest in **Financial Crime Prevention**, especially in the context of evolving geopolitical risks that may increase suspicious transaction activities.
 
 ### 🕒 Simulation Context
 
