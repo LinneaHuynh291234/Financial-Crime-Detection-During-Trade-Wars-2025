@@ -2,42 +2,62 @@
 
 ### 🧾 Project Overview
 
-As a **Proof of Concept (PoC)**, this data science project focuses on detecting potentially fraudulent transactions. It reflects my growing interest in **Financial Crime Prevention**, particularly under conditions of heightened **geopolitical risk**, where abnormal payment activity may increase.
+This **Proof of Concept (PoC)** data science project explores techniques to detect potentially fraudulent banking transactions. It reflects my growing interest in **Financial Crime Prevention**, especially in times of **geopolitical tension**, where abnormal payment behavior may rise.
 
 ---
-## 🔍 🎯 Objectives
 
-1. **Generate realistic Nordic transaction data:** (Nordea API schema)
+### 🕒 Simulation Context
 
-🕒 Simulation Context
+| **Item**        | **Detail**                                                                                       |
+|-----------------|--------------------------------------------------------------------------------------------------|
+| **Date Range**  | 2025‑04‑02 → 2025‑07‑02                                                                           |
+| **Scenario**    | A simulated trade conflict in mid-2025 leads to increased abnormal cross-border transactions.     |
+| **Currencies**  | SEK, DKK, NOK → Converted to **EUR** using the **Riksbanken API** in real time.                  |
+| **Transaction Volume** | 10,716 transactions (31 categorical, 9 numerical features), formatted per **PSD2 Open Banking API**. |
 
-| Item           | Detail                                                                                      |
-|----------------|---------------------------------------------------------------------------------------------|
-| **Date range** | **2025‑04‑02 → 2025‑07‑02**                                                                |
-| **Scenario**   | A hypothetical trade tension escalation in mid-2025 triggers increased abnormal payment behavior. |
-| **Currencies** | SEK, DKK, NOK → **converted to EUR** in-flight using the **Riksbanken API**.       |
-| **Volume**     | **10,716** transactions (31 Categorical, 9 Numeric). Formatted according to the **PSD2 Open Banking API.                 |
-
-2. **Develop domain expertise in Transaction Monitoring Systems.**
-
-- Developed an understanding of how **Transaction Monitoring Systems (TMS)** function within financial institutions.  
-- Discovered how **AI can enhance traditional TMS** by addressing key challenges:
-
-| ⚠️ **Challenge**                               | ✅ **Takeaway**                                                                                      |
-|------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| Static rule-based systems                      | Combine rule-based logic with AI models for personalization and self-learning → lower false positives. |
-| Outdated monitoring scenarios                  | Use AI to automatically learn and suggest scenario tuning based on evolving transaction behavior.    |
-| Manual reporting & long investigation times    | Automate alerts with clear explanations, aligned with SAR standards to speed up investigations.      |
-
-3. **Document a repeatable workflow:**
-
-![Workflow](images/visual-selection.png)
 ---
 
-## 🔧 Tools and Technologies
+## 🎯 Project Objectives
 
-- **Python** (Pandas, NumPy, Scikit-learn) for data processing and modeling  
-- **SQL** (SQLite3) for transaction aggregation and analysis  
-- **Riksbanken API** for dynamic currency conversion to EUR  
-- **Jupyter Notebooks** for EDA and model development  
-- **Nordea Open Banking API** data format for realistic transaction simulation  
+### 1. 📊 Generate realistic Nordic transactions
+
+### 2. 🧠 Build Domain Expertise in Transaction Monitoring Systems (TMS)
+
+- Gained insight into how **TMS** operate within financial institutions.  
+- Learned how **AI combines with traditional rule-based systems** to better detect fraud and increase true positive rates.
+
+*Challenges and AI-Driven Solutions:*
+
+- **Traditional rule-based detection:**  
+  Static rule-based systems are inflexible and often cause many false alarms.  
+  **AI solution:** Combine rules with AI models that personalize and learn from data, increasing true positive rates.
+
+- **Outdated detection scenarios:**  
+  Fraud detection rules can become outdated as transaction patterns evolve.  
+  **AI solution:** Use AI to adaptively learn and suggest scenario tuning based on new transaction behaviors.
+
+- **Slow investigations and manual reporting:**  
+  Manual alert handling slows down investigations.  
+  **AI solution:** Automate alerting with clear, explainable outputs aligned with **SAR** reporting formats to speed up reviews.
+
+### 3. 🔁 Document a Repeatable Workflow
+
+- **Data Collection:** Combine transaction records, KYC customer profiles, and summary statistics into one dataset.
+- **Data Cleaning:** Perform currency conversion, remove duplicates, and standardize formatting.
+- **EDA:** Conduct descriptive statistics, univariate and bivariate analysis.
+- **Feature Engineering:** Handle missing values, create risk indicators, normalize and scale features.
+- **Anomaly Detection:** Apply tree-based models (Isolation Forests).
+- **Score Combination:** Ensemble individual model outputs to create a unified anomaly score.
+- **Model Evaluation:** Use metrics such as Precision-Recall, ROC-AUC, confusion matrix, and feature importance.
+
+![Workflow](images/visual selection.png)
+
+---
+
+## 🔧 Tools & Technologies Used
+
+- **Python**: Pandas, NumPy, Scikit-learn for modeling and preprocessing  
+- **SQL (SQLite3)**: For feature aggregation and data analysis  
+- **Riksbanken API**: For live currency conversion to EUR  
+- **Jupyter Notebooks**: For exploratory data analysis and workflow tracking  
+- **Nordea Open Banking API schema**: To simulate realistic PSD2-compliant transaction data  
