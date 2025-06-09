@@ -38,7 +38,7 @@ As a *Proof of Concept (PoC)*, this data science project explores **anomaly scor
 - **Traditional rule-based detection:**  
   Static rule-based systems are inflexible and often cause many false alarms.  
   **AI solution:** Combine rule-based systems with AI models that personalize and learn from data, reducing **false positive** rates.
-  z
+  
 - **Outdated detection scenarios:**  
   Fraud detection rules can become outdated as transaction patterns evolve.  
   **AI solution:** Use AI to adaptively learn and suggest scenario tuning based on new transaction behaviors.
