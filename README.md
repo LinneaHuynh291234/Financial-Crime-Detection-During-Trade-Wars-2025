@@ -6,7 +6,7 @@ As a *Proof of Concept (PoC)*, this data science project explores **anomaly scor
 
 ---
 
-### 🕒 Simulation Context & Achivement
+### 🕒 Simulation Context & Achievements
 
 | **Item**               | **Detail**                                                                                                                                                      |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
