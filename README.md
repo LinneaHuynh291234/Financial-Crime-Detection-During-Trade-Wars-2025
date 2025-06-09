@@ -8,12 +8,19 @@ This **Proof of Concept (PoC)** data science project explores techniques to dete
 
 ### 🕒 Simulation Context
 
-| **Item**        | **Detail**                                                                                       |
-|-----------------|--------------------------------------------------------------------------------------------------|
-| **Date Range**  | 2025‑04‑02 → 2025‑07‑02                                                                           |
-| **Scenario**    | A simulated trade conflict in mid-2025 leads to increased abnormal cross-border transactions.     |
-| **Currencies**  | SEK, DKK, NOK → Converted to **EUR** using the **Riksbanken API** in real time.                  |
-| **Transaction Volume** | 10,716 transactions (31 categorical, 9 numerical features), formatted per **PSD2 Open Banking API**. |
+| **Item**               | **Detail**                                                                                                                                                      |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Date Range**         | 2025‑04‑02 → 2025‑07‑02                                                                                                                                           |
+| **Scenario**           | A simulated trade conflict in mid-2025 leads to increased abnormal cross-border transactions.                                                                    |
+| **Currencies**         | SEK, DKK, NOK → Converted to **EUR** using the **Riksbanken API** in real time.                                                                                  |
+| **Transaction Volume** | 10,716 transactions (31 categorical, 9 numerical features), formatted per **PSD2 Open Banking API**.                                                             |
+| **Data Collection**    | Combine transaction records, KYC customer profiles, and summary statistics into one dataset.                                                                     |
+| **Data Cleaning**      | Currency conversion, duplicate removal, and format standardization.                                                                          |
+| **EDA**                | Descriptive statistics, univariate and bivariate analysis.                                                                                              |
+| **Feature Engineering**| Handle missing values, create risk indicators, normalize and scale features.                                                           |
+| **Anomaly Detection**  |  Apply Isolation Forest and other tree-based models.                                                                                       |
+| **Score Combination**   |  Ensemble model outputs to generate a unified anomaly score.                                                                              |
+| **Model Evaluation:**   |  Use metrics such as Precision-Recall, ROC-AUC, confusion matrix, and feature importance.                                                                           |
 
 ---
 
@@ -40,15 +47,8 @@ This **Proof of Concept (PoC)** data science project explores techniques to dete
   Manual alert handling slows down investigations.  
   **AI solution:** Automate alerting with clear, explainable outputs aligned with **SAR** reporting formats to speed up reviews.
 
-### 3. 🔁 Document a Repeatable Workflow
+### 3. 🔁Follow data science workflow best practices and write reusable code.
 
-- **Data Collection:** Combine transaction records, KYC customer profiles, and summary statistics into one dataset.
-- **Data Cleaning:** Perform currency conversion, remove duplicates, and standardize formatting.
-- **EDA:** Conduct descriptive statistics, univariate and bivariate analysis.
-- **Feature Engineering:** Handle missing values, create risk indicators, normalize and scale features.
-- **Anomaly Detection:** Apply tree-based models (Isolation Forests).
-- **Score Combination:** Ensemble individual model outputs to create a unified anomaly score.
-- **Model Evaluation:** Use metrics such as Precision-Recall, ROC-AUC, confusion matrix, and feature importance.
 
 ![Workflow](images/visual_selection.png)
 
