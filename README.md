@@ -50,7 +50,7 @@ This **Proof of Concept (PoC)** data science project explores techniques to dete
 - **Score Combination:** Ensemble individual model outputs to create a unified anomaly score.
 - **Model Evaluation:** Use metrics such as Precision-Recall, ROC-AUC, confusion matrix, and feature importance.
 
-![Workflow](C:\Users\linhh\OneDrive\Desktop\Linh\Project\Financial-Crime-Detection-During-Trade-Wars-2025\images\visual-selection.png)
+![Workflow](https://via.placeholder.com/300x150.png?text=Workflow+Image)
 
 ---
 
