@@ -31,14 +31,14 @@ As a *Proof of Concept (PoC)*, this data science project explores **anomaly scor
 ### 2. 🧠 Build Domain Expertise in Transaction Monitoring Systems (TMS)
 
 - Gained insight into how **TMS** operate within financial institutions.  
-- Learned how **AI combines with traditional rule-based systems** to better detect fraud and increase true positive rates.
+- Learned how **AI** combines with **traditional rule-based** systems to more effectively detect fraudulent transactions.
 
 *Challenges and AI-Driven Solutions:*
 
 - **Traditional rule-based detection:**  
   Static rule-based systems are inflexible and often cause many false alarms.  
-  **AI solution:** Combine rules with AI models that personalize and learn from data, increasing true positive rates.
-
+  **AI solution:** Combine rule-based systems with AI models that personalize and learn from data, reducing **false positive** rates.
+  z
 - **Outdated detection scenarios:**  
   Fraud detection rules can become outdated as transaction patterns evolve.  
   **AI solution:** Use AI to adaptively learn and suggest scenario tuning based on new transaction behaviors.
