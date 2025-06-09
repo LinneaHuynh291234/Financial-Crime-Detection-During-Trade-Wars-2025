@@ -1,45 +1,37 @@
-# Anomaly-Based Fraud Prevention in Transaction Monitoring Systems
+# Anomaly-Based Fraud Prevention in Transaction Monitoring
 
 ### 🧾 Project Overview
 
 As a **Proof of Concept (PoC)**, this data science project focuses on detecting potentially fraudulent transactions. It reflects my growing interest in **Financial Crime Prevention**, particularly under conditions of heightened **geopolitical risk**, where abnormal payment activity may increase.
 
-### 🕒 Simulation Context
+---
+## 🔍 🎯 Objectives
+
+1. **Generate realistic Nordic transaction data:** (Nordea API schema)
+
+🕒 Simulation Context
 
 | Item           | Detail                                                                                      |
 |----------------|---------------------------------------------------------------------------------------------|
 | **Date range** | **2025‑04‑02 → 2025‑07‑02**                                                                |
 | **Scenario**   | A hypothetical trade tension escalation in mid-2025 triggers increased abnormal payment behavior. |
-| **Currencies** | SEK, DKK, NOK → **converted to EUR** in-flight using the **Riksbanken API**.                |
-| **Volume**     | **10,716** transactions.                                                                    |
+| **Currencies** | SEK, DKK, NOK → **converted to EUR** in-flight using the **Riksbanken API**.       |
+| **Volume**     | **10,716** transactions (31 Categorical, 9 Numeric). Formatted according to the **PSD2 Open Banking API.                 |
 
----
+2. **Develop domain expertise in Transaction Monitoring Systems.**
 
-## 🎯 Objectives
+- Developed an understanding of how **Transaction Monitoring Systems (TMS)** function within financial institutions.  
+- Discovered how **AI can enhance traditional TMS** by addressing key challenges:
 
-1. **Generate realistic Nordic transaction data:** (Nordea API schema)
-
-- Simulate 10,716 Nordic banking transactions in the Nordea Open Banking API format.  
-- Convert currencies using the Riksbanken API to maintain consistent transaction values.
-
-2. **Gain domain knowledge in TMS workflow:**
-
-- Developed an understanding of how Transaction Monitoring Systems operate in financial institutions.  
-- Learned key steps in transaction data processing, anomaly detection, and alert generation.  
-- Explored how risk indicators and scoring models integrate into daily monitoring workflows.  
-- Studied regulatory requirements and compliance considerations affecting TMS design.  
-- Applied this knowledge to improve feature engineering and model tuning for better fraud detection.
+| ⚠️ **Challenge**                               | ✅ **Takeaway**                                                                                      |
+|------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| Static rule-based systems                      | Combine rule-based logic with AI models for personalization and self-learning → lower false positives. |
+| Outdated monitoring scenarios                  | Use AI to automatically learn and suggest scenario tuning based on evolving transaction behavior.    |
+| Manual reporting & long investigation times    | Automate alerts with clear explanations, aligned with SAR standards to speed up investigations.      |
 
 3. **Document a repeatable workflow:**
 
-- Data Collection: Merge data from transactional records, KYC customer profiles, and summary statistics into a unified dataset.  
-- Data Cleaning: Currency conversion and duplicate removal.  
-- Exploratory Data Analysis: Descriptive statistics, uni- and bivariate analyses.  
-- Feature Engineering: Handle missing values, create new features, apply transformations and scaling.  
-- Anomaly Scoring: Apply tree-based anomaly detection models.  
-- Score Combination: Combine individual anomaly scores using ensemble methods.  
-- Evaluation: Use metrics such as Precision-Recall curves, ROC-AUC, confusion matrix, and analyze feature importance.
-
+![Workflow](images/visual-selection.png)
 ---
 
 ## 🔧 Tools and Technologies
