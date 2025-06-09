@@ -2,25 +2,25 @@
 
 ### 🧾 Project Overview
 
-This **Proof of Concept (PoC)** data science project explores techniques to detect potentially fraudulent banking transactions. It reflects my growing interest in **Financial Crime Prevention**, especially in times of **geopolitical tension**, where abnormal payment behavior may rise.
+As a *Proof of Concept (PoC)*, this data science project explores **anomaly scoring** techniques to detect potentially fraudulent banking transactions. It reflects my growing interest in **Financial Crime Prevention**, especially during periods of **geopolitical tension**, when abnormal payment behavior tends to increase.
 
 ---
 
-### 🕒 Simulation Context
+### 🕒 Simulation Context & Achivement
 
 | **Item**               | **Detail**                                                                                                                                                      |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Date Range**         | 2025‑04‑02 → 2025‑07‑02                                                                                                                                           |
-| **Scenario**           | A simulated trade conflict in mid-2025 leads to increased abnormal cross-border transactions.                                                                    |
+| **Date Range**         | **2025‑04‑02** → **2025‑07‑02**                                                                                                                                           |
+| **Scenario**           | A simulated trade conflict in mid-2025 leads to increased abnormal transactions.                                                                    |
 | **Currencies**         | SEK, DKK, NOK → Converted to **EUR** using the **Riksbanken API** in real time.                                                                                  |
-| **Transaction Volume** | 10,716 transactions (31 categorical, 9 numerical features), formatted per **PSD2 Open Banking API**.                                                             |
-| **Data Collection**    | Combine transaction records, KYC customer profiles, and summary statistics into one dataset.                                                                     |
+| **Transaction Volume** | **10,716 transactions** (31 categorical, 9 numerical features), formatted per **PSD2 Open Banking API**.                                                             |
+| **Data Collection**    | Combine `transaction records`, `KYC customer profiles`, and `summary statistics` into one dataset.                                                                     |
 | **Data Cleaning**      | Currency conversion, duplicate removal, and format standardization.                                                                          |
-| **EDA**                | Descriptive statistics, univariate and bivariate analysis.                                                                                              |
-| **Feature Engineering**| Handle missing values, create risk indicators, normalize and scale features.                                                           |
-| **Anomaly Detection**  |  Apply Isolation Forest and other tree-based models.                                                                                       |
+| **EDA**                | Perform EDA using **descriptive statistics**, **univariate/bivariate analysis**, and **outlier detection** to understand data distribution.                                                                                             |
+| **Feature Engineering**| Handle missing values, create risk indicators, **normalize** and **scale features**.                                                           |
+| **Anomaly Detection**  |  Apply **Isolation Forest** and other **tree-based** models.                                                                                       |
 | **Score Combination**   |  Ensemble model outputs to generate a unified anomaly score.                                                                              |
-| **Model Evaluation:**   |  Use metrics such as Precision-Recall, ROC-AUC, confusion matrix, and feature importance.                                                                           |
+| **Model Evaluation:**   |  Use metrics such as **Precision-Recall**, **ROC-AUC**, **confusion matrix**, and **feature importance.**                                                                           |
 
 ---
 
