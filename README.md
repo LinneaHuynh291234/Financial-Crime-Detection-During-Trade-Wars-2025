@@ -18,7 +18,7 @@ As a *Proof of Concept (PoC)*, this data science project explores **anomaly scor
 | **Data Cleaning**      | Currency conversion, duplicate removal, and format standardization.                                                                          |
 | **EDA**                | Perform EDA using **descriptive statistics**, **univariate/bivariate analysis**, and **outlier detection** to understand data distribution.                                                                                             |
 | **Feature Engineering**| Handle missing values, create risk indicators, **normalize** and **scale features**.                                                           |
-| **Anomaly Detection**  |  Apply **Isolation Forest** and other **tree-based** models.                                                                                       |
+| **Anomaly Detection**  |  Develop and apply multiple anomaly scoring models to generate anomaly scores.                                                                                       |
 | **Score Combination**   |  Ensemble model outputs to generate a unified anomaly score.                                                                              |
 | **Model Evaluation:**   |  Use metrics such as **Precision-Recall**, **ROC-AUC**, **confusion matrix**, and **feature importance.**                                                                           |
 
