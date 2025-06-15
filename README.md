@@ -10,7 +10,7 @@ As a *Proof of Concept (PoC)*, this data science project explores **anomaly scor
 
 | **Item**               | **Detail**                                                                                                                                                      |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Date Range**         | **2025‑04‑02** → **2025‑07‑02**                                                                                                                                           |
+| **Date Range**         | **2025‑04‑02** → **2025‑04‑04**                                                                                                                                           |
 | **Scenario**           | A simulated trade conflict in mid-2025 leads to increased abnormal transactions.                                                                    |
 | **Currencies**         | SEK, DKK, NOK → Converted to **EUR** using the **Riksbanken API** in real time.                                                                                  |
 | **Transaction Volume** | **10,716 transactions** (31 categorical, 9 numerical features), formatted per **PSD2 Open Banking API**.                                                             |

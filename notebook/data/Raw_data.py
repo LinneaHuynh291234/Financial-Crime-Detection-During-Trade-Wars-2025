@@ -17,7 +17,7 @@ NUM_TRANSACTIONS   = 10_717
 DUPLICATE_RATIO    = 0.01      # 1 % duplicate transactions
 
 START_DATE = datetime(2025, 4, 2)
-END_DATE   = datetime(2025, 7, 2)
+END_DATE   = datetime(2025, 4, 4)
 
 non_sanctioned_countries = ["SE", "NO", "FI", "DK", "NL"]
 country_currency_map = {"SE": "SEK", "NO": "NOK", "FI": "EUR", "DK": "DKK", "NL": "EUR"}
@@ -186,6 +186,6 @@ summaries   = kyc_summaries(transactions, customers)
 
 customers.to_csv("customers.csv",    index=False)
 transactions.to_csv("transactions.csv", index=False)
-summaries.to_csv("summary_statistics.csv", index=False)
+summaries.to_csv("customer_summary_statistics.csv", index=False)
 
 print("✅ customers.csv, transactions.csv, summary_statistics.csv generated.")
