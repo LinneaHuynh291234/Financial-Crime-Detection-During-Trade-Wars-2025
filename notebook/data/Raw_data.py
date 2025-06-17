@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
-from faker import Faker
 import random
+from faker import Faker
 from datetime import datetime, timedelta
 
 # -----------------------------------------------------------------------------
-#  Configuration
+# Configuration
 # -----------------------------------------------------------------------------
 fake = Faker(["sv_SE", "en_US", "fi_FI", "no_NO", "da_DK", "nl_NL"])
 Faker.seed(42)
@@ -14,7 +14,7 @@ np.random.seed(42)
 
 NUM_CUSTOMERS      = 1_000
 NUM_TRANSACTIONS   = 10_717
-DUPLICATE_RATIO    = 0.01      # 1 % duplicate transactions
+DUPLICATE_RATIO    = 0.01
 
 START_DATE = datetime(2025, 4, 2)
 END_DATE   = datetime(2025, 4, 4)
@@ -28,36 +28,28 @@ occupations     = ["Engineer", "Doctor", "Teacher", "Consultant", "Cashier",
                    "Artist", "Driver", "Student", "Analyst", "Nurse"]
 genders         = ["Male", "Female", "Other"]
 
-# Bank fixed to Nordea but country varies per customer
+# -----------------------------------------------------------------------------
+# Helper functions
+# -----------------------------------------------------------------------------
 def random_bank():
-    return {"name": "Nordea", "bic": "NDEASESS",
-            "country": random.choice(non_sanctioned_countries)}
+    return {"name": "Nordea", "bic": "NDEASESS", "country": random.choice(non_sanctioned_countries)}
 
-# -----------------------------------------------------------------------------
-#  Helper functions
-# -----------------------------------------------------------------------------
 def random_datetime(start, end):
-    """Return a random timestamp string between start and end."""
     delta_seconds = int((end - start).total_seconds())
     rand_dt = start + timedelta(seconds=random.randint(0, delta_seconds))
     return rand_dt.strftime("%Y-%m-%d %H:%M:%S")
 
 def ordered_datetimes():
-    """Generate four timestamps in chronological order."""
     t  = random_datetime(START_DATE, END_DATE)
     t0 = datetime.strptime(t, "%Y-%m-%d %H:%M:%S")
-
     v  = (t0 + timedelta(days=random.randint(0, 2))).strftime("%Y-%m-%d %H:%M:%S")
     v0 = datetime.strptime(v, "%Y-%m-%d %H:%M:%S")
-
     p  = (v0 + timedelta(days=random.randint(0, 2))).strftime("%Y-%m-%d %H:%M:%S")
     p0 = datetime.strptime(p, "%Y-%m-%d %H:%M:%S")
-
     b  = (p0 + timedelta(days=random.randint(0, 2))).strftime("%Y-%m-%d %H:%M:%S")
     return t, v, p, b
 
 def account_numbers():
-    """Return BBAN + IBAN pair for Sweden‑style accounts."""
     base = str(random.randint(40000000000, 49999999999))
     return [
         {"value": base, "_type": "BBAN_SE"},
@@ -65,7 +57,7 @@ def account_numbers():
     ]
 
 # -----------------------------------------------------------------------------
-#  1. Customers
+# Customer generator
 # -----------------------------------------------------------------------------
 def generate_customers(n):
     rows = []
@@ -91,17 +83,16 @@ def generate_customers(n):
             "credit_limit"                : f"{random.uniform(500, 20_000):.2f}",
             "latest_transaction_booking_date": END_DATE.strftime("%Y-%m-%d"),
             "registration_number"         : fake.ssn(),
-            # --- new KYC columns ---
-            "dob": fake.date_of_birth(minimum_age=18, maximum_age=75).strftime("%Y-%m-%d"),
-            "nationality"       : country,
-            "residence_country" : random.choice(non_sanctioned_countries),
-            "occupation"        : random.choice(occupations),
-            "gender"            : random.choice(genders)
+            "dob"                         : fake.date_of_birth(minimum_age=18, maximum_age=75).strftime("%Y-%m-%d"),
+            "nationality"                 : country,
+            "residence_country"           : random.choice(non_sanctioned_countries),
+            "occupation"                  : random.choice(occupations),
+            "gender"                      : random.choice(genders)
         })
     return pd.json_normalize(rows)
 
 # -----------------------------------------------------------------------------
-#  2. Transactions
+# Transaction generator
 # -----------------------------------------------------------------------------
 def generate_transactions(cust_df, n):
     rows = []
@@ -113,17 +104,31 @@ def generate_transactions(cust_df, n):
         ("Insättning",  "deposit",   "Deposit from {m}")
     ]
 
-    credit_map  = dict(zip(cust_df.customer_id, cust_df.credit_limit.astype(float)))
-    currency_map= dict(zip(cust_df.customer_id, cust_df.currency))
+    credit_map   = dict(zip(cust_df.customer_id, cust_df.credit_limit.astype(float)))
+    currency_map = dict(zip(cust_df.customer_id, cust_df.currency))
 
-    # unique + duplicate part
-    for _ in range(int(n * (1 - DUPLICATE_RATIO))):
+    num_fraudulent = int(n * 0.02)
+    fraud_indices = set(random.sample(range(n), num_fraudulent))
+
+    for i in range(int(n * (1 - DUPLICATE_RATIO))):
         cid             = random.choice(cust_df.customer_id)
         type_desc, ttype, narr_fmt = random.choice(types)
         merchant        = fake.company()
-        amount          = round(random.uniform(10, credit_map[cid]), 2)
-        t_date, v_date, p_date, b_date = ordered_datetimes()
+        credit_limit    = credit_map[cid]
         currency        = currency_map[cid]
+        t_date, v_date, p_date, b_date = ordered_datetimes()
+
+        is_fraud = int(i in fraud_indices)
+        amount = round(random.uniform(10, credit_limit), 2)
+
+        if is_fraud:
+            fraud_type = random.choice(["spike", "burst", "swish_large"])
+            if fraud_type == "spike":
+                amount = round(credit_limit * random.uniform(0.8, 1.2), 2)
+            elif fraud_type == "burst":
+                t_date = v_date = p_date = b_date = datetime(2025, 4, 3, 3, 15).strftime("%Y-%m-%d %H:%M:%S")
+            elif fraud_type == "swish_large" and ttype == "swish":
+                amount = round(credit_limit * random.uniform(0.7, 1.0), 2)
 
         row = {
             "customer_id"     : cid,
@@ -138,25 +143,25 @@ def generate_transactions(cust_df, n):
             "narrative"       : narr_fmt.format(m=merchant),
             "status"          : "billed",
             "counterparty_name": merchant,
-            "amount"          : f"{amount:.2f}"
+            "amount"          : f"{amount:.2f}",
+            "is_fraud"        : is_fraud
         }
-        # conditional extras
+
         if ttype == "card":
             row["card_number"] = " ".join(str(random.randint(1000, 9999)) for _ in range(4))
         elif ttype == "swish":
             row.update({"message":"Membership payment", "own_message":"Sports club 2025"})
+
         rows.append(row)
 
-    # add duplicates
     rows.extend(random.choices(rows, k=int(n * DUPLICATE_RATIO)))
     return pd.DataFrame(rows)
 
 # -----------------------------------------------------------------------------
-#  3. Summaries
+# KYC Summary Generator
 # -----------------------------------------------------------------------------
 def kyc_summaries(tx_df, cust_df):
     tx_df["amount_f"] = tx_df["amount"].astype(float)
-
     agg = (tx_df.groupby("customer_id")
                  .agg(total_volume=('amount_f','sum'),
                       avg_amount  =('amount_f','mean'),
@@ -166,26 +171,27 @@ def kyc_summaries(tx_df, cust_df):
                       last_transaction_date=('transaction_date','max'))
                  .reset_index())
 
-    cust_cols = ["customer_id","available_balance","credit_limit",
-                 "country","currency"]
+    cust_cols = ["customer_id","available_balance","credit_limit","country","currency"]
     merged = agg.merge(cust_df[cust_cols], on="customer_id", how="left")
 
-    # round numeric columns nicely
-    for col in ["total_volume","avg_amount","max_amount",
-                "min_amount","available_balance","credit_limit"]:
+    for col in ["total_volume","avg_amount","max_amount","min_amount","available_balance","credit_limit"]:
         merged[col] = merged[col].astype(float).round(2)
 
     return merged
 
 # -----------------------------------------------------------------------------
-#  Generate & Save
+# Main Entry Point
 # -----------------------------------------------------------------------------
-customers   = generate_customers(NUM_CUSTOMERS)
-transactions= generate_transactions(customers, NUM_TRANSACTIONS)
-summaries   = kyc_summaries(transactions, customers)
+def main():
+    customers    = generate_customers(NUM_CUSTOMERS)
+    transactions = generate_transactions(customers, NUM_TRANSACTIONS)
+    summaries    = kyc_summaries(transactions, customers)
 
-customers.to_csv("customers.csv",    index=False)
-transactions.to_csv("transactions.csv", index=False)
-summaries.to_csv("customer_summary_statistics.csv", index=False)
+    customers.to_csv("customers.csv", index=False)
+    transactions.to_csv("transactions.csv", index=False)
+    summaries.to_csv("customer_summary_statistics.csv", index=False)
 
-print("✅ customers.csv, transactions.csv, summary_statistics.csv generated.")
+    print("✅ customers.csv, transactions.csv, customer_summary_statistics.csv generated.")
+
+if __name__ == "__main__":
+    main()
